@@ -1,0 +1,10 @@
+# 03/16/2016
+Initial Setup.
+1. Imported CardboardSDK
+2. Imported Standard Character Controller Assets
+3. Created folders for Audio, Models, Scenes and Scripts under Assets. Saved StarryNight.unity scene.
+4. Created CardboardMain+FPSController+Crosshair hybrid GameObject.
+5. Created Changelog.txt. We will record changes made here before committing to master in GitHub.
+6. Changed Project Settings -> Audio -> Spatializer Plugin to CardboardAudio.
+7. Added Cardboard Audio Listener to MainCamera.
+8. Updated Readme.md. Added a section for references. We will keep track of assets we are downloading and using here.
