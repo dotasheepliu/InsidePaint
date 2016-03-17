@@ -8,3 +8,7 @@ Initial Setup.
 6. Changed Project Settings -> Audio -> Spatializer Plugin to CardboardAudio.
 7. Added Cardboard Audio Listener to MainCamera.
 8. Updated Readme.md. Added a section for references. We will keep track of assets we are downloading and using here.
+
+# 03/16/2016
+1. Updated Readme.md
+2. Added skybox to StarryNight scene.
