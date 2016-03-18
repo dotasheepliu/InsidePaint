@@ -14,3 +14,11 @@ https://3dwarehouse.sketchup.com/model.html?id=1a5e30351b6b701442093fbdd1fcbc50
 
 2. Starry Night Skybox
 http://www.virtualworld.sk/project/textures/skyboxes
+
+7. Gentle breeze sound
+https://www.youtube.com/watch?v=Yz89PMXXYPg
+8. Night sounds
+http://soundbible.com/2083-Crickets-Chirping-At-Night.html
+
+9. Church Bells
+https://www.youtube.com/watch?v=Pp3zVZ5M5Ag
