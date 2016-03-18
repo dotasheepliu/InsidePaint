@@ -90,12 +90,12 @@ public static class CardboardAudio {
   /// @note This should only be called from the main Unity thread.
   public static void Shutdown (CardboardAudioListener listener) {
     if (initialized && listener.transform == listenerTransform) {
-      initialized = false;
-
-      Shutdown();
-      sampleRate = -1;
-      numChannels = -1;
-      framesPerBuffer = -1;
+//      initialized = false;
+//
+//      //Shutdown();
+//      sampleRate = -1;
+//      numChannels = -1;
+//      framesPerBuffer = -1;
 
       Debug.Log("Cardboard audio system is shutdown.");
     }

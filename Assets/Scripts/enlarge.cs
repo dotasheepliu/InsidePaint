@@ -4,10 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class enlarge : MonoBehaviour {
 	public GameObject room;
+	public AudioSource audios;
 	// Use this for initialization
 	public bool trig = false;
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -18,7 +19,7 @@ public class enlarge : MonoBehaviour {
 			trig = true;
 			StartCoroutine (Goodasdasd ());
 		}
-
+		audios.volume = 1f;
 	}
 
 	IEnumerator Goodasdasd () {
