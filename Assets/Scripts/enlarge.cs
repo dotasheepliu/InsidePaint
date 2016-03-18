@@ -15,7 +15,7 @@ public class enlarge : MonoBehaviour {
 	void Update () {
 		//Debug.Log (transform.localPosition.z);
 
-		if ((transform.localPosition.z > 6f) && (transform.localPosition.x < -0.8f) && trig == false) {
+		if ((transform.localPosition.z > 5f) && (transform.localPosition.x < -0.8f) && trig == false) {
 			trig = true;
 			StartCoroutine (Goodasdasd ());
 		}
