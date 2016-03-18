@@ -16,3 +16,6 @@ Initial Setup.
 # 03/18/2016
 1. Added audio effects in StarryNight scene.
 2. Modified FirstPersonController.cs to include a sound volume field to control walk sounds.
+
+#03/18/2016
+1. Changed Asset Serialization mode to Forced Text.
