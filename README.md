@@ -26,3 +26,12 @@ https://3dwarehouse.sketchup.com/model.html?id=293d220003249204780f7212a54e9c7c
 
 6. Van gogh Paintings
 http://www.vangoghmuseum.nl/
+
+7. Gentle breeze sound
+https://www.youtube.com/watch?v=Yz89PMXXYPg
+
+8. Night sounds
+http://soundbible.com/2083-Crickets-Chirping-At-Night.html
+
+9. Church Bells
+https://www.youtube.com/watch?v=Pp3zVZ5M5Ag
