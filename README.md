@@ -9,29 +9,44 @@ This repository holds the 3rd project for the Virtual Reality course at the Univ
 
 
 # References
-1. Vincent Van Gogh's "The Starry Night" in 3D
-https://3dwarehouse.sketchup.com/model.html?id=1a5e30351b6b701442093fbdd1fcbc50
-
-2. Starry Night Skybox
+1. Starry Night Skybox
 http://www.virtualworld.sk/project/textures/skyboxes
 
-3. Wood Floor
+2. Wood Floor
 https://3dwarehouse.sketchup.com/model.html?id=8c65cf599dab996d6acd1d8ad3144f51
 
-4. Pillar
+3. Pillar
 https://3dwarehouse.sketchup.com/model.html?id=42f9aa3ccdc657538d2d730aebe7865d
 
-5. Frame for Paintings
+4. Frame for Paintings
 https://3dwarehouse.sketchup.com/model.html?id=293d220003249204780f7212a54e9c7c
 
-6. Van gogh Paintings
+5. Van gogh Paintings
 http://www.vangoghmuseum.nl/
 
-7. Gentle breeze sound
+6. Gentle breeze sound
 https://www.youtube.com/watch?v=Yz89PMXXYPg
 
-8. Night sounds
+7. Night sounds
 http://soundbible.com/2083-Crickets-Chirping-At-Night.html
 
-9. Church Bells
+8. Church Bells
 https://www.youtube.com/watch?v=Pp3zVZ5M5Ag
+
+9. Blue grass texture
+http://www.deviantart.com/art/Blue-Grass-Texture-576607890
+
+10. Low poly village green zelkova
+https://3dwarehouse.sketchup.com/model.html?id=63ecd0ffd6c59ff4f9e8cd846ef13776
+
+11. Low poly Bur oak
+https://3dwarehouse.sketchup.com/model.html?id=6c92b70f473b814f9e8cd846ef13776
+
+12. Dutch house medieval
+https://3dwarehouse.sketchup.com/model.html?id=c1d2d278a370d9e88def7e485cea16a7
+
+13. Medieval French house
+https://3dwarehouse.sketchup.com/model.html?id=72e28936ab7c6882fc76f75216c9263f
+
+14. St.Mary's Church
+https://3dwarehouse.sketchup.com/model.html?id=993d5aa971a90cee435e97e9c9b31984
