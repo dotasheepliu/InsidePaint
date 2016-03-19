@@ -35,6 +35,8 @@ SketchUpImporter:
     3300002: x2
     4300000: Mesh French+House2
     4300002: Mesh x2
+    6400000: //RootNode
+    6400002: x2
   materials:
     importMaterials: 1
     materialName: 2
@@ -61,7 +63,7 @@ SketchUpImporter:
     lODScreenPercentages: []
     globalScale: 0.0254
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0

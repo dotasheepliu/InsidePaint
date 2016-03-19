@@ -24,3 +24,6 @@ Initial Setup.
 1. Removed Starry Night model from StarryNight scene.
 2. Created a custom realistic terrain and scene based on the Starry Night painting.
 3. Updated README.md with references to the assets used in the scene.
+
+# 03/18/2016
+1. Added colliders to the objects in the Starry Night scene - Fixed Issue #5.
