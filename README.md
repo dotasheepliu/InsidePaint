@@ -50,3 +50,6 @@ https://3dwarehouse.sketchup.com/model.html?id=72e28936ab7c6882fc76f75216c9263f
 
 14. St.Mary's Church
 https://3dwarehouse.sketchup.com/model.html?id=993d5aa971a90cee435e97e9c9b31984
+
+15. BedRoom Model
+https://sketchfab.com/models/311d052a9f034ba8bce55a1a8296b6f9
