@@ -27,3 +27,9 @@ Initial Setup.
 
 # 03/18/2016
 1. Added colliders to the objects in the Starry Night scene - Fixed Issue #5.
+
+# 03/20/2016
+1. Added Lights to houses in StarryNight scene.
+2. Added moon and stars to StarryNight scene.
+3. Changed Skybox shader to Mobile/Skybox.
+4. Added DreamSequence.cs and RotateGalaxy.cs scripts.
