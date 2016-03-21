@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class enlarge : MonoBehaviour {
 	public GameObject room;
-	public AudioSource audios;
+	//public AudioSource audios;
 	// Use this for initialization
 	public bool trig = false;
 	void Start () {
@@ -19,10 +19,11 @@ public class enlarge : MonoBehaviour {
 			trig = true;
 			StartCoroutine (Goodasdasd ());
 		}
-		audios.volume = 1f;
+		//audios.volume = 1f;
 	}
 
 	IEnumerator Goodasdasd () {
+		yield return new WaitForSeconds(2f);
 		for (int i = 1; i < 80; i++) {
 			yield return new WaitForSeconds(0.01f);
 			room.transform.localScale = new Vector3 (room.transform.localScale.x*1.01f, room.transform.localScale.y, room.transform.localScale.z*1.01f);
