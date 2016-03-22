@@ -36,3 +36,6 @@ Initial Setup.
 
 # 03/21/2016
 1. Configured joystick and build settings to Android.
+
+# 03/21/2016
+1. Fixed issue with Raycast not going in proper direction from CardboardHead.
