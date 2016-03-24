@@ -30,7 +30,7 @@ public class enlarge : MonoBehaviour {
 			room.transform.localPosition = new Vector3 (room.transform.localPosition.x, room.transform.localPosition.y - 0.03f, room.transform.localPosition.z-0.01f);
 		}
 	
-			SceneManager.LoadScene (1);
+			SceneManager.LoadSceneAsync (1);
 	
 	}
 }
