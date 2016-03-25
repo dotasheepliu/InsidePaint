@@ -56,3 +56,6 @@ https://sketchfab.com/models/311d052a9f034ba8bce55a1a8296b6f9
 
 16. Crescent Moon
 https://3dwarehouse.sketchup.com/model.html?id=f728dbead1338fc6265d1076b4b6c5c
+
+17. Vast Outer Space
+https://www.assetstore.unity3d.com/en/#!/content/38913
