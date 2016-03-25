@@ -19,3 +19,9 @@ EditorBuildSettings:
     path: Assets/Models/HighlightingSystemDemo/Scenes/Compound.unity
   - enabled: 0
     path: Assets/Models/HighlightingSystemDemo/Scenes/Mobile.unity
+  - enabled: 1
+    path: Assets/Scenes/Museum.unity
+  - enabled: 1
+    path: Assets/Scenes/bedroom.unity
+  - enabled: 1
+    path: Assets/Scenes/StarryNight.unity
