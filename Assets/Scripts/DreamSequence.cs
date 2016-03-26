@@ -13,6 +13,9 @@ public class DreamSequence : MonoBehaviour {
 	private bool shouldStartGraveSequence = false;
 	private GameObject[] graveSequenceGameObjects;
 	private GameObject[] graveSequenceGameObjectsReference;
+	private bool shouldWakeUp = false;
+	public Material secondSkyboxMaterial;
+	private float blend = 0.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -80,12 +83,28 @@ public class DreamSequence : MonoBehaviour {
 		if (shouldStartGraveSequence) {
 			GameObject[] skyDreamObjects = GameObject.FindGameObjectsWithTag ("SkyDream");
 			foreach (GameObject gameObject in skyDreamObjects) {
-				Debug.Log (gameObject.name);
 				gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
 			}
 
 			foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
 				gameObject.SetActive (true);
+			}
+		}
+
+		if (shouldWakeUp) {
+			foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
+				gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+			}
+
+			GameObject[] celestialObjects = GameObject.FindGameObjectsWithTag ("VincentVision");
+			foreach (GameObject gameObject in celestialObjects) {
+				Destroy (gameObject);
+			}
+
+			if (blend <= 0.5f) {
+				secondSkyboxMaterial.SetFloat ("_Blend", blend);
+				RenderSettings.skybox = secondSkyboxMaterial;
+				blend += Time.deltaTime * 0.1f;
 			}
 		}
 	}
