@@ -59,3 +59,12 @@ https://3dwarehouse.sketchup.com/model.html?id=f728dbead1338fc6265d1076b4b6c5c
 
 17. Vast Outer Space
 https://www.assetstore.unity3d.com/en/#!/content/38913
+
+18. Cypress tree
+https://3dwarehouse.sketchup.com/model.html?id=daf79726470d741bb96aa5dc23c036c
+
+19. Bush
+https://3dwarehouse.sketchup.com/model.html?id=a264ece6ed590f7ef9e8cd846ef13776
+
+20. Gravestone
+https://3dwarehouse.sketchup.com/model.html?id=998f14481b23b646f31192ec856054b8
