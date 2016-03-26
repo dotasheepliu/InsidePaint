@@ -691,8 +691,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: b8b03d395f5734e98af91ccf44f9bf47, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311126151}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 1.6, y: 4.69, z: 2.29}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000016292068}
+  m_LocalPosition: {x: 3.77, y: 6.04, z: 2.3}
   m_LocalScale: {x: 1.7662122, y: 1.7662128, z: 1.7662128}
   m_Children:
   - {fileID: 1331747191}
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594973067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.47, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 808013414}
@@ -1275,7 +1275,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.46
+  m_Height: 5.06
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -1917,7 +1917,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
-  moon: {fileID: 0}
+  secondSkyboxMaterial: {fileID: 0}
 --- !u!114 &808013416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4588,7 +4588,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400114, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
       propertyPath: m_RootOrder
