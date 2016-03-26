@@ -39,3 +39,7 @@ Initial Setup.
 
 # 03/21/2016
 1. Fixed issue with Raycast not going in proper direction from CardboardHead.
+
+# 03/25/2016
+1. Added interaction with stars and moon in StarryNight scene.
+2. Updated README.md.
