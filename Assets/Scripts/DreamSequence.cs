@@ -10,6 +10,9 @@ public class DreamSequence : MonoBehaviour {
 	private bool isStarTransformed;
 	private GameObject[] gameObjectsForTransform;
 	public Dictionary<string, GameObject> starsInVincentVisionReference;
+	private bool shouldStartGraveSequence = false;
+	private GameObject[] graveSequenceGameObjects;
+	private GameObject[] graveSequenceGameObjectsReference;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +21,12 @@ public class DreamSequence : MonoBehaviour {
 		starsInVincentVisionReference = new Dictionary<string, GameObject> ();
 		foreach (GameObject gameObject in starsInVincentVision) {
 			starsInVincentVisionReference.Add (gameObject.name, gameObject);
+			gameObject.SetActive (false);
+		}
+
+		graveSequenceGameObjects = GameObject.FindGameObjectsWithTag ("GraveDream");
+		graveSequenceGameObjectsReference = graveSequenceGameObjects;
+		foreach (GameObject gameObject in graveSequenceGameObjects) {
 			gameObject.SetActive (false);
 		}
 	}
@@ -65,6 +74,18 @@ public class DreamSequence : MonoBehaviour {
 						}
 					}
 				}
+			}
+		}
+
+		if (shouldStartGraveSequence) {
+			GameObject[] skyDreamObjects = GameObject.FindGameObjectsWithTag ("SkyDream");
+			foreach (GameObject gameObject in skyDreamObjects) {
+				Debug.Log (gameObject.name);
+				gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+			}
+
+			foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
+				gameObject.SetActive (true);
 			}
 		}
 	}

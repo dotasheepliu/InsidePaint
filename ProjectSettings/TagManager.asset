@@ -8,6 +8,8 @@ TagManager:
   - ForVincentVision
   - VincentVisionStars
   - canv
+  - GraveDream
+  - SkyDream
   layers:
   - Default
   - TransparentFX
