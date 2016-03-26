@@ -68,3 +68,6 @@ https://3dwarehouse.sketchup.com/model.html?id=a264ece6ed590f7ef9e8cd846ef13776
 
 20. Gravestone
 https://3dwarehouse.sketchup.com/model.html?id=998f14481b23b646f31192ec856054b8
+
+21. Skybox Volume 2
+https://www.assetstore.unity3d.com/en/#!/content/3392
