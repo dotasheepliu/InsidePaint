@@ -23,7 +23,7 @@ public class enlarge : MonoBehaviour {
 	}
 
 	IEnumerator Goodasdasd () {
-		yield return new WaitForSeconds(2f);
+		//yield return new WaitForSeconds(2f);
 		for (int i = 1; i < 80; i++) {
 			yield return new WaitForSeconds(0.01f);
 			room.transform.localScale = new Vector3 (room.transform.localScale.x*1.01f, room.transform.localScale.y, room.transform.localScale.z*1.01f);
