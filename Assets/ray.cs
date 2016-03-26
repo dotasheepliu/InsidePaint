@@ -29,7 +29,24 @@ public class ray : MonoBehaviour {
 	}
 
 
-
+	IEnumerator movebru () {
+		for (int i = 0; i < 10; i++) {
+			brushcam.transform.Rotate (0.6f, 0, 0);
+			yield return new WaitForSeconds(0.01f);
+		}
+		for (int i = 0; i < 20; i++) {
+			brushcam.transform.Rotate (-0.6f, 0, 0);
+			yield return new WaitForSeconds(0.01f);
+		}
+		for (int i = 0; i < 20; i++) {
+			brushcam.transform.Rotate (0.6f, 0, 0);
+			yield return new WaitForSeconds(0.01f);
+		}
+		for (int i = 0; i < 10; i++) {
+			brushcam.transform.Rotate (-0.6f, 0, 0);
+			yield return new WaitForSeconds(0.01f);
+		}
+	}
 
 	void pickObject() {
 		RaycastHit hitInfo;
@@ -49,31 +66,37 @@ public class ray : MonoBehaviour {
 					case 0:
 						p0.SetActive (false);
 						p.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 1:
 						p.SetActive (false);
 						p1.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 2:
 						p1.SetActive (false);
 						p2.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 3:
 						p2.SetActive (false);
 						p3.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 4:
 						p3.SetActive (false);
 						p4.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 5:
 						p4.SetActive (false);
 						p5.SetActive (true);
+						StartCoroutine (movebru ());
 						canvcount++;
 						break;
 					case 6:
