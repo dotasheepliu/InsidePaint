@@ -540,7 +540,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
-  soundVolume: 0
+  soundVolume: 0.03
 --- !u!143 &76843653
 CharacterController:
   m_ObjectHideFlags: 0
@@ -716,7 +716,7 @@ MonoBehaviour:
   directivitySharpness: 1
   gainDb: 0
   occlusionEnabled: 0
-  playOnAwake: 1
+  playOnAwake: 0
   rolloffMode: 1
   sourceClip: {fileID: 8300000, guid: 99a07fb3bb411f643984f1034a4a4023, type: 3}
   sourceLoop: 0
@@ -739,6 +739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClip1: {fileID: 8300000, guid: 9870a2e6900f49542ae6c6184ceaf3a4, type: 3}
   audioClip2: {fileID: 8300000, guid: 0900b03abde0d9740b5e9a197b0d3b12, type: 3}
+  theCurator: {fileID: 122482002}
+  audioClip3: {fileID: 8300000, guid: bca1959780dfb6f40b9fd14438fb9b55, type: 3}
+  galleryMusic: {fileID: 429098125}
 --- !u!1 &178697168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,7 +1221,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1229,7 +1232,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1240,7 +1243,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &429098128
 Transform:
   m_ObjectHideFlags: 0
