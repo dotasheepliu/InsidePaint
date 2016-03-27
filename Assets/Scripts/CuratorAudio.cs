@@ -8,6 +8,10 @@ public class CuratorAudio : MonoBehaviour {
 	private CardboardAudioSource audioSource;
 	private bool haveBothClipsBeenPlayed = false;
 	private bool hasFirstClipBeenPlayed = false;
+	private bool hasFinalClipBeenPlayed = false;
+	public GameObject theCurator;
+	public AudioClip audioClip3;
+	public GameObject galleryMusic;
 
 	// Use this for initialization
 	void Start () {
@@ -20,17 +24,26 @@ public class CuratorAudio : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!haveBothClipsBeenPlayed) {
-			if (!hasFirstClipBeenPlayed) {
-				audioSource.clip = audioClip1;
-				audioSource.Play ();
-				hasFirstClipBeenPlayed = true;
-				Debug.Log ("Playing now");
+		if(!BedroomScene.isPaintingComplete) {
+			if (!haveBothClipsBeenPlayed) {
+				if (!hasFirstClipBeenPlayed) {
+					audioSource.clip = audioClip1;
+					audioSource.Play ();
+					hasFirstClipBeenPlayed = true;
+				}
+				if (!audioSource.isPlaying) {
+					audioSource.clip = audioClip2;
+					audioSource.Play ();
+					haveBothClipsBeenPlayed = true;
+				}
 			}
-			if (!audioSource.isPlaying) {
-				audioSource.clip = audioClip2;
+		} else {
+			CardboardAudioSource galleryMusicAudioSource = galleryMusic.GetComponent<CardboardAudioSource> ();
+			galleryMusicAudioSource.Stop ();
+			if(!hasFinalClipBeenPlayed) {
+				audioSource.clip = audioClip3;
 				audioSource.Play ();
-				haveBothClipsBeenPlayed = true;
+				hasFinalClipBeenPlayed = true;
 			}
 		}
 	}
