@@ -5935,7 +5935,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
-  soundVolume: 0
+  soundVolume: 0.03
 --- !u!143 &1063051634
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6000,7 +6000,7 @@ MonoBehaviour:
   sourceLoop: 1
   sourceMute: 0
   sourcePitch: 1
-  sourceVolume: 0.1
+  sourceVolume: 0.15
   sourceMaxDistance: 500
   sourceMinDistance: 0
   hrtfEnabled: 1
