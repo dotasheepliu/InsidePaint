@@ -20,18 +20,22 @@ public class CuratorAudio : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!haveBothClipsBeenPlayed) {
-			if (!hasFirstClipBeenPlayed) {
-				audioSource.clip = audioClip1;
-				audioSource.Play ();
-				hasFirstClipBeenPlayed = true;
-				Debug.Log ("Playing now");
+		if(!BedroomScene.isPaintingComplete) {
+			if (!haveBothClipsBeenPlayed) {
+				if (!hasFirstClipBeenPlayed) {
+					audioSource.clip = audioClip1;
+					audioSource.Play ();
+					hasFirstClipBeenPlayed = true;
+					Debug.Log ("Playing now");
+				}
+				if (!audioSource.isPlaying) {
+					audioSource.clip = audioClip2;
+					audioSource.Play ();
+					haveBothClipsBeenPlayed = true;
+				}
 			}
-			if (!audioSource.isPlaying) {
-				audioSource.clip = audioClip2;
-				audioSource.Play ();
-				haveBothClipsBeenPlayed = true;
-			}
+		} else {
+			
 		}
 	}
 }
