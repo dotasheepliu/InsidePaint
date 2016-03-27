@@ -23,11 +23,9 @@ public class ray : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetButtonDown("Fire1")) {
-				pickObject();
-			//Debug.Log("Fire1");
-				}
+			pickObject();
+		}
 	}
-
 
 	IEnumerator movebru () {
 		for (int i = 0; i < 10; i++) {
@@ -52,67 +50,84 @@ public class ray : MonoBehaviour {
 		RaycastHit hitInfo;
 		objectInHand = null;
 		if (Physics.Raycast (Cardboard.SDK.GetComponentInChildren<CardboardHead> ().Gaze, out hitInfo, Mathf.Infinity, layerMask)) {
-			Debug.Log ("Hit something " + hitInfo.transform.name);
+			//Debug.Log ("Hit something " + hitInfo.transform.name);
 			if (hitInfo.transform.gameObject.name == "Brush 2") {
-				if (!isbrushtake) {
-					brushtable.SetActive (false);
-					brushcam.SetActive (true);
-					isbrushtake = true;
+				if(!BedroomScene.isDreamComplete) {
+					Debug.Log ("I should sleep for sometime!"); //TODO: Play Audio here.
+				} else {
+					if (!isbrushtake) {
+						brushtable.SetActive (false);
+						brushcam.SetActive (true);
+						isbrushtake = true;
+						Debug.Log ("First I'll make a sketch of the landscape.");
+					}
 				}
 			}
 			if (hitInfo.transform.gameObject.tag == "canv") {
-				if (isbrushtake) {
-					switch (canvcount) {
-					case 0:
-						p0.SetActive (false);
-						p.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 1:
-						p.SetActive (false);
-						p1.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 2:
-						p1.SetActive (false);
-						p2.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 3:
-						p2.SetActive (false);
-						p3.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 4:
-						p3.SetActive (false);
-						p4.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 5:
-						p4.SetActive (false);
-						p5.SetActive (true);
-						StartCoroutine (movebru ());
-						canvcount++;
-						break;
-					case 6:
-						brushtable.SetActive (true);
-						brushcam.SetActive (false);
-						canvcount++;
-						break;
-					default:
-						break;
+				if(!BedroomScene.isDreamComplete) {
+					Debug.Log ("I should sleep for sometime!"); //TODO: Play Audio here.
+				} else {
+					if (isbrushtake) {
+						switch (canvcount) {
+						case 0:
+							StartCoroutine (movebru ());
+							p0.SetActive (false);
+							p.SetActive (true);
+							Debug.Log ("Next I should paint the land blue to emphasize the peaceful country night!"); //TODO: Play Audio here.
+							canvcount++;
+							break;
+						case 1:
+							StartCoroutine (movebru ());
+							p.SetActive (false);
+							p1.SetActive (true);
+							Debug.Log ("Here I'll add a Cypress tree to add depth and a reminder of death which transports " +
+								"us from our world to the celestial light. "); //TODO: Play Audio here.
+							canvcount++;
+							break;
+						case 2:
+							StartCoroutine (movebru ());
+							p1.SetActive (false);
+							p2.SetActive (true);
+							Debug.Log ("I paint the stars in bright yellow with the energy radiating all " +
+								"around"); //TODO: Play Audio here.
+							canvcount++;
+							break;
+						case 3:
+							StartCoroutine (movebru ());
+							p2.SetActive (false);
+							p3.SetActive (true);
+							canvcount++;
+							break;
+						case 4:
+							StartCoroutine (movebru ());
+							p3.SetActive (false);
+							p4.SetActive (true);
+							Debug.Log ("I should paint the wind swirling through the air burning, " +
+								"bursting through into the solidity of the earth.");
+							canvcount++;
+							break;
+						case 5:
+							p4.SetActive (false);
+							p5.SetActive (true);
+							StartCoroutine (movebru ());
+							canvcount++;
+							break;
+						case 6:
+							brushtable.SetActive (true);
+							brushcam.SetActive (false);
+							canvcount++;
+							BedroomScene.isPaintingComplete = true;
+							break;
+						default:
+							break;
+						}
+					} else {
+						Debug.Log ("I should pick up the brush from the table!"); //TODO: Play Audio here.
 					}
 				}
-
-			}	
+			}
 		} else {
 			Debug.Log("Did not hit");
 		}
-			
-}
+	}
 }
