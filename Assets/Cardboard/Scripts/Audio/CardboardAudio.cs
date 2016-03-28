@@ -82,7 +82,7 @@ public static class CardboardAudio {
                 framesPerBuffer + ").");
     } else if (listener.transform != listenerTransform) {
       Debug.LogError("Only one CardboardAudioListener component is allowed in the scene.");
-      CardboardAudioListener.Destroy(listener);
+      //CardboardAudioListener.Destroy(listener);
     }
   }
 
@@ -115,10 +115,14 @@ public static class CardboardAudio {
     if (initialized) {
       worldScaleInverse = 1.0f / worldScale;
       float globalGain = ConvertAmplitudeFromDb(globalGainDb);
-      Vector3 position = listenerTransform.position;
-      Quaternion rotation = listenerTransform.rotation;
-      ConvertAudioTransformFromUnity(ref position, ref rotation);
-      // Pass listener properties to the system.
+			Vector3 position = Vector3.zero;
+			Quaternion rotation = Quaternion.identity;
+		if(listenerTransform != null) {
+			position = listenerTransform.position;
+			rotation = listenerTransform.rotation;
+		}
+		ConvertAudioTransformFromUnity(ref position, ref rotation);
+			      // Pass listener properties to the system.
       SetListenerGain(globalGain);
       SetListenerTransform(position.x, position.y, position.z, rotation.x, rotation.y, rotation.z,
                            rotation.w);

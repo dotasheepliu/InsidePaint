@@ -23,25 +23,48 @@ public class BedroomScene : MonoBehaviour {
 	public GameObject ambientSounds;
 	public AudioClip ambientSoundClip;
 	private float waitBeforeSwitch = 1.2f;
+	private bool isAmbientAudioStarted = false;
+	private CardboardAudioSource ambientAudioSource;
 
 	// Use this for initialization
 	void Start () {
+		AudioListener[] listeners = FindObjectsOfType (typeof(AudioListener)) as AudioListener[];
+		foreach(AudioListener listener in listeners) {
+			Debug.Log ("Listener :: " + listener.gameObject);
+		}
+
+		CardboardAudioListener[] cardboardListeners = FindObjectsOfType (typeof(CardboardAudioListener)) as CardboardAudioListener[];
+		foreach(CardboardAudioListener listener in cardboardListeners) {
+			Debug.Log ("Cardboard Listener :: " + listener.gameObject);
+		}
+
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioSource.volume = 0.5f;
 
-		CardboardAudioSource ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
+		/*ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
 		ambientAudioSource.clip = ambientSoundClip;
 		ambientAudioSource.loop = true;
 		ambientAudioSource.volume = 0.33f;
 		ambientAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
 		ambientAudioSource.minDistance = 1;
 		ambientAudioSource.maxDistance = 2;
-		ambientAudioSource.Play ();
+		ambientAudioSource.Play ();*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		RaycastHit hitInfo;
+		if(!isAmbientAudioStarted) {
+			ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
+			ambientAudioSource.clip = ambientSoundClip;
+			ambientAudioSource.loop = true;
+			ambientAudioSource.volume = 0.33f;
+			ambientAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+			ambientAudioSource.minDistance = 1;
+			ambientAudioSource.maxDistance = 2;
+			ambientAudioSource.Play ();
+			isAmbientAudioStarted = true;
+		}
 		if (!isDreamComplete) {
 			if (!hasIntroAudioBeenPlayed) {
 				/*Debug.Log ("Ahh! Home! This is the only place where I can find peace and comfort. " +
