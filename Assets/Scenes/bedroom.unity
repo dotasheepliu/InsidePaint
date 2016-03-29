@@ -1713,6 +1713,13 @@ MonoBehaviour:
   p3: {fileID: 85530939}
   p4: {fileID: 1534936622}
   p5: {fileID: 765183583}
+  sleepClip: {fileID: 8300000, guid: 80b88b35518f549439da9be89427b3e6, type: 3}
+  makeSketchClip: {fileID: 8300000, guid: c489460407fc0dc46b47619167f653ec, type: 3}
+  landBlueClip: {fileID: 8300000, guid: 65ca3b9013b95af498e2a8cf306f2e91, type: 3}
+  cypressTreeClip: {fileID: 8300000, guid: 713c4709d3580c14b9acf20eed86879a, type: 3}
+  starsYellowClip: {fileID: 8300000, guid: 9367ffb953d56c44b8594fe5d6674ac5, type: 3}
+  windSwirlingClip: {fileID: 8300000, guid: 778245ef7cde16745a281f98012edd63, type: 3}
+  pickBrushClip: {fileID: 8300000, guid: a476eafa6ff6f3e48ba54fbbb0dbc1c5, type: 3}
 --- !u!1 &849139951
 GameObject:
   m_ObjectHideFlags: 0

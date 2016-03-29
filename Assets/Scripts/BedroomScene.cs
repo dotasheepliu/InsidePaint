@@ -28,16 +28,6 @@ public class BedroomScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		AudioListener[] listeners = FindObjectsOfType (typeof(AudioListener)) as AudioListener[];
-		foreach(AudioListener listener in listeners) {
-			Debug.Log ("Listener :: " + listener.gameObject);
-		}
-
-		CardboardAudioListener[] cardboardListeners = FindObjectsOfType (typeof(CardboardAudioListener)) as CardboardAudioListener[];
-		foreach(CardboardAudioListener listener in cardboardListeners) {
-			Debug.Log ("Cardboard Listener :: " + listener.gameObject);
-		}
-
 		audioSource = gameObject.GetComponent<AudioSource> ();
 		audioSource.volume = 0.5f;
 
