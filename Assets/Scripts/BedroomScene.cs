@@ -26,6 +26,7 @@ public class BedroomScene : MonoBehaviour {
 	private float waitBeforeSwitch = 1.2f;
 	private bool isAmbientAudioStarted = false;
 	private CardboardAudioSource ambientAudioSource;
+	public GameObject reticle;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +47,20 @@ public class BedroomScene : MonoBehaviour {
 	void Update () {
 		audioSource.volume = 0.3f;
 		RaycastHit hitInfo;
+
+		if (Physics.Raycast (Cardboard.SDK.GetComponentInChildren<CardboardHead> ().Gaze, out hitInfo, Mathf.Infinity, layerMask)) {
+			GameObject hitObject = hitInfo.transform.gameObject;
+			if (hitObject.name.Contains ("bad")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else if (hitObject.name.Contains ("chair")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else if (hitObject.name.Contains ("walls")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else {
+				reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), hitObject);
+			}
+		}
+
 		if(!isAmbientAudioStarted) {
 			ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
 			ambientAudioSource.clip = ambientSoundClip;
