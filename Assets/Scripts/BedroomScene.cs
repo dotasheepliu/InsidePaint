@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(CardboardAudioSource))]
 public class BedroomScene : MonoBehaviour {
+	public GameObject easel;
 	public LayerMask layerMask;
 	private bool hasIntroAudioBeenPlayed = false;
 	private AudioSource audioSource;
@@ -25,11 +26,12 @@ public class BedroomScene : MonoBehaviour {
 	private float waitBeforeSwitch = 1.2f;
 	private bool isAmbientAudioStarted = false;
 	private CardboardAudioSource ambientAudioSource;
+	public GameObject reticle;
 
 	// Use this for initialization
 	void Start () {
 		audioSource = gameObject.GetComponent<AudioSource> ();
-		audioSource.volume = 0.5f;
+		//audioSource.volume = 0.3f;
 
 		/*ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
 		ambientAudioSource.clip = ambientSoundClip;
@@ -43,7 +45,22 @@ public class BedroomScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		audioSource.volume = 0.3f;
 		RaycastHit hitInfo;
+
+		if (Physics.Raycast (Cardboard.SDK.GetComponentInChildren<CardboardHead> ().Gaze, out hitInfo, Mathf.Infinity, layerMask)) {
+			GameObject hitObject = hitInfo.transform.gameObject;
+			if (hitObject.name.Contains ("bad")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else if (hitObject.name.Contains ("chair")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else if (hitObject.name.Contains ("walls")) {
+				reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), hitObject, hitInfo.point);
+			} else {
+				reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), hitObject);
+			}
+		}
+
 		if(!isAmbientAudioStarted) {
 			ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
 			ambientAudioSource.clip = ambientSoundClip;
@@ -67,6 +84,7 @@ public class BedroomScene : MonoBehaviour {
 			}
 		} else {
 			if (!hasIntroAudioBeenPlayed) {
+				easel.SetActive (true);
 				//Debug.Log ("Huh! I should put what I saw onto the canvas.");
 				audioSource.clip = paintStarryNightClip;
 				if (!audioSource.isPlaying) {

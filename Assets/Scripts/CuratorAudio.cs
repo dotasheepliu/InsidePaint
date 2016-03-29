@@ -45,6 +45,10 @@ public class CuratorAudio : MonoBehaviour {
 				audioSource.Play ();
 				hasFinalClipBeenPlayed = true;
 			}
+
+			if(!audioSource.isPlaying) {
+				Application.Quit ();
+			}
 		}
 	}
 }

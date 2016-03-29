@@ -32,6 +32,7 @@ public class DreamSequence : MonoBehaviour {
 	private float waitBeforeWake;
 	private CardboardAudioSource gachetAudioSource;
 	private bool hasGachetAudioBeenPlayed = false;
+	public GameObject reticle;
 
 	// Use this for initialization
 	void Start () {
@@ -50,7 +51,7 @@ public class DreamSequence : MonoBehaviour {
 		}
 
 		audioSource = GetComponent<AudioSource> ();
-		audioSource.volume = 0.5f;
+		audioSource.volume = 0.2f;
 
 		gachetAudioSource = vincentFriend.GetComponent<CardboardAudioSource> ();
 		gachetAudioSource.clip = gachetClip;
@@ -58,7 +59,7 @@ public class DreamSequence : MonoBehaviour {
 
 		waitBeforeGachet = dreamStartClip.length + 0.1f;
 		waitBeforeGrave = iSeeSkyClip.length;
-		waitBeforeWake = illnessClip.length;
+		waitBeforeWake = illnessClip.length + 2f;
 	}
 	
 	// Update is called once per frame
@@ -93,10 +94,15 @@ public class DreamSequence : MonoBehaviour {
 							Vector3 moonDirection = gameObject.transform.position - transform.position;
 							float moonAngle = Vector3.Angle (moonDirection, lookDirection);
 							if (moonAngle <= 5.0f) {
+								reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), 
+									gameObject, gameObject.transform.position);
 								isMoonTransformed = gameObject.GetComponentInChildren<TransformMoon> ().transformMoon ();
 								if (isMoonTransformed) {
 									gameObject.tag = "InVincentVision";
 								}
+							} else {
+								reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), 
+									gameObject);
 							}
 						}
 
@@ -105,7 +111,8 @@ public class DreamSequence : MonoBehaviour {
 							Vector3 starDirection = gameObject.transform.position - transform.position;
 							float starAngle = Vector3.Angle (starDirection, lookDirection);
 							if (starAngle <= 10.0f) {
-								Debug.Log ("The Star!"); //TODO: Play Audio here.
+								reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), 
+									gameObject, gameObject.transform.position);
 								isStarTransformed = gameObject.GetComponentInChildren<TransformStars>().transformStar();
 								if (isStarTransformed) {
 									gameObject.tag = "InVincentVision";
@@ -118,6 +125,9 @@ public class DreamSequence : MonoBehaviour {
 									hasSkyMonologueBeenPlayed = true;
 									shouldStartGraveSequence = true;
 								}
+							} else {
+								reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), 
+									gameObject);
 							}
 						}
 					}

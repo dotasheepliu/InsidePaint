@@ -3497,7 +3497,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3594,6 +3594,7 @@ MonoBehaviour:
   gachetClip: {fileID: 8300000, guid: 395521a8b418806419599d9d0ea12308, type: 3}
   iSeeSkyClip: {fileID: 8300000, guid: 5a3c32a2d7f42374399db4e1b7f3eadf, type: 3}
   illnessClip: {fileID: 8300000, guid: f99861b0d0ca86644bde4adba11f8533, type: 3}
+  reticle: {fileID: 1224812797}
 --- !u!4 &589431759 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f27cc219d57bbf944a70e35f740c5470, type: 3}
@@ -6859,6 +6860,10 @@ Prefab:
 --- !u!4 &1224812796 stripped
 Transform:
   m_PrefabParentObject: {fileID: 482300, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+  m_PrefabInternal: {fileID: 1224812795}
+--- !u!1 &1224812797 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
   m_PrefabInternal: {fileID: 1224812795}
 --- !u!1001 &1240233815
 Prefab:
