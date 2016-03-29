@@ -835,7 +835,7 @@ MonoBehaviour:
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 1
-  rolloffMode: 0
+  rolloffMode: 1
   sourceClip: {fileID: 8300000, guid: b5aaa749e62b1464e89a4a260d2cfb76, type: 3}
   sourceLoop: 1
   sourceMute: 0
