@@ -16,8 +16,18 @@ public class ray : MonoBehaviour {
 	public GameObject p3;
 	public GameObject p4;
 	public GameObject p5;
+	private AudioSource audioSource;
+	public AudioClip sleepClip;
+	public AudioClip makeSketchClip;
+	public AudioClip landBlueClip;
+	public AudioClip cypressTreeClip;
+	public AudioClip starsYellowClip;
+	public AudioClip windSwirlingClip;
+	public AudioClip pickBrushClip;
+
 	void Start () {
-	
+		audioSource = gameObject.GetComponent<AudioSource> ();
+		audioSource.volume = 0.5f;
 	}
 	
 	// Update is called once per frame
@@ -53,19 +63,25 @@ public class ray : MonoBehaviour {
 			//Debug.Log ("Hit something " + hitInfo.transform.name);
 			if (hitInfo.transform.gameObject.name == "Brush 2") {
 				if(!BedroomScene.isDreamComplete) {
-					Debug.Log ("I should sleep for sometime!"); //TODO: Play Audio here.
+					//Debug.Log ("I should sleep for sometime!");
+					audioSource.clip = sleepClip;
+					audioSource.Play ();
 				} else {
 					if (!isbrushtake) {
 						brushtable.SetActive (false);
 						brushcam.SetActive (true);
 						isbrushtake = true;
-						Debug.Log ("First I'll make a sketch of the landscape.");
+						//Debug.Log ("First I'll make a sketch of the landscape.");
+						audioSource.clip = makeSketchClip;
+						audioSource.Play ();
 					}
 				}
 			}
 			if (hitInfo.transform.gameObject.tag == "canv") {
 				if(!BedroomScene.isDreamComplete) {
-					Debug.Log ("I should sleep for sometime!"); //TODO: Play Audio here.
+					//Debug.Log ("I should sleep for sometime!");
+					audioSource.clip = sleepClip;
+					audioSource.Play ();
 				} else {
 					if (isbrushtake) {
 						switch (canvcount) {
@@ -73,23 +89,29 @@ public class ray : MonoBehaviour {
 							StartCoroutine (movebru ());
 							p0.SetActive (false);
 							p.SetActive (true);
-							Debug.Log ("Next I should paint the land blue to emphasize the peaceful country night!"); //TODO: Play Audio here.
+							//Debug.Log ("Next I should paint the land blue to emphasize the peaceful country night!");
+							audioSource.clip = landBlueClip;
+							audioSource.Play ();
 							canvcount++;
 							break;
 						case 1:
 							StartCoroutine (movebru ());
 							p.SetActive (false);
 							p1.SetActive (true);
-							Debug.Log ("Here I'll add a Cypress tree to add depth and a reminder of death which transports " +
-								"us from our world to the celestial light. "); //TODO: Play Audio here.
+							/*Debug.Log ("Here I'll add a Cypress tree to add depth and a reminder of death which transports " +
+								"us from our world to the celestial light. ");*/
+							audioSource.clip = cypressTreeClip;
+							audioSource.Play ();
 							canvcount++;
 							break;
 						case 2:
 							StartCoroutine (movebru ());
 							p1.SetActive (false);
 							p2.SetActive (true);
-							Debug.Log ("I paint the stars in bright yellow with the energy radiating all " +
-								"around"); //TODO: Play Audio here.
+							/*Debug.Log ("I paint the stars in bright yellow with the energy radiating all " +
+								"around");*/
+							audioSource.clip = starsYellowClip;
+							audioSource.Play ();
 							canvcount++;
 							break;
 						case 3:
@@ -102,8 +124,10 @@ public class ray : MonoBehaviour {
 							StartCoroutine (movebru ());
 							p3.SetActive (false);
 							p4.SetActive (true);
-							Debug.Log ("I should paint the wind swirling through the air burning, " +
-								"bursting through into the solidity of the earth.");
+							/*Debug.Log ("I should paint the wind swirling through the air burning, " +
+								"bursting through into the solidity of the earth.");*/
+							audioSource.clip = windSwirlingClip;
+							audioSource.Play ();
 							canvcount++;
 							break;
 						case 5:
@@ -122,7 +146,9 @@ public class ray : MonoBehaviour {
 							break;
 						}
 					} else {
-						Debug.Log ("I should pick up the brush from the table!"); //TODO: Play Audio here.
+						//Debug.Log ("I should pick up the brush from the table!");
+						audioSource.clip = pickBrushClip;
+						audioSource.Play ();
 					}
 				}
 			}
