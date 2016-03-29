@@ -6041,7 +6041,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.5
+  m_Height: 3.09
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -6804,7 +6804,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395900746}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 95.3, y: 2.46, z: 41.9}
+  m_LocalPosition: {x: 95.3, y: 1.5, z: 41.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1517869334}
@@ -8373,12 +8373,12 @@ MonoBehaviour:
   gainDb: 0
   occlusionEnabled: 0
   playOnAwake: 0
-  rolloffMode: 0
+  rolloffMode: 1
   sourceClip: {fileID: 8300000, guid: 395521a8b418806419599d9d0ea12308, type: 3}
   sourceLoop: 0
   sourceMute: 0
   sourcePitch: 1
-  sourceVolume: 0.7
+  sourceVolume: 1
   sourceMaxDistance: 500
   sourceMinDistance: 0
   hrtfEnabled: 1
@@ -8433,7 +8433,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -8455,7 +8455,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1001 &1533519366
 Prefab:
   m_ObjectHideFlags: 0

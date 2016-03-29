@@ -181,7 +181,7 @@ public class DreamSequence : MonoBehaviour {
 				}
 				blend += Time.deltaTime * 0.1f;
 
-				if(blend >= 0.8f) {
+				if(blend >= 0.95f) {
 					BedroomScene.isDreamComplete = true;
 					SceneManager.LoadSceneAsync (1);
 				}
