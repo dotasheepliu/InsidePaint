@@ -33,6 +33,8 @@ public class DreamSequence : MonoBehaviour {
 	private CardboardAudioSource gachetAudioSource;
 	private bool hasGachetAudioBeenPlayed = false;
 	public GameObject reticle;
+	public GameObject hallucinationAudio;
+	private bool isHallucinationAudioPlayed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -94,15 +96,10 @@ public class DreamSequence : MonoBehaviour {
 							Vector3 moonDirection = gameObject.transform.position - transform.position;
 							float moonAngle = Vector3.Angle (moonDirection, lookDirection);
 							if (moonAngle <= 5.0f) {
-								reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), 
-									gameObject, gameObject.transform.position);
 								isMoonTransformed = gameObject.GetComponentInChildren<TransformMoon> ().transformMoon ();
 								if (isMoonTransformed) {
 									gameObject.tag = "InVincentVision";
 								}
-							} else {
-								reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), 
-									gameObject);
 							}
 						}
 
@@ -111,8 +108,6 @@ public class DreamSequence : MonoBehaviour {
 							Vector3 starDirection = gameObject.transform.position - transform.position;
 							float starAngle = Vector3.Angle (starDirection, lookDirection);
 							if (starAngle <= 10.0f) {
-								reticle.GetComponent<CardboardReticle> ().OnGazeStart (this.gameObject.GetComponent<Camera> (), 
-									gameObject, gameObject.transform.position);
 								isStarTransformed = gameObject.GetComponentInChildren<TransformStars>().transformStar();
 								if (isStarTransformed) {
 									gameObject.tag = "InVincentVision";
@@ -123,25 +118,30 @@ public class DreamSequence : MonoBehaviour {
 									audioSource.clip = iSeeSkyClip;
 									audioSource.Play ();
 									hasSkyMonologueBeenPlayed = true;
-									shouldStartGraveSequence = true;
 								}
-							} else {
-								reticle.GetComponent<CardboardReticle> ().OnGazeExit (this.gameObject.GetComponent<Camera> (), 
-									gameObject);
 							}
 						}
 					}
+				}
+
+				if(hasSkyMonologueBeenPlayed && !audioSource.isPlaying) {
+					shouldStartGraveSequence = true;
 				}
 			}
 		}
 
 		if (shouldStartGraveSequence && !shouldWakeUp) {
-			if(waitBeforeGrave > 0) {
+			/*if(waitBeforeGrave > 0) {
 				waitBeforeGrave -= Time.deltaTime * 1.0f;
-			} else {
+			} else {*/
 				GameObject[] skyDreamObjects = GameObject.FindGameObjectsWithTag ("SkyDream");
 				foreach (GameObject gameObject in skyDreamObjects) {
 					gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+				}
+
+				GameObject[] vincentVisionObjects = GameObject.FindGameObjectsWithTag ("InVincentVision");
+				foreach(GameObject gameObject in vincentVisionObjects) {
+					Destroy (gameObject);
 				}
 
 				foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
@@ -157,7 +157,7 @@ public class DreamSequence : MonoBehaviour {
 					hasDepressionClipBeenPlayed = true;
 					shouldWakeUp = true;
 				}
-			}
+			/*}*/
 		}
 
 		if (shouldWakeUp) {
@@ -175,13 +175,23 @@ public class DreamSequence : MonoBehaviour {
 					Destroy (gameObject);
 				}
 
-				if (blend <= 0.5f) {
+				foreach(KeyValuePair<string, GameObject> entry in starsInVincentVisionReference) {
+					Destroy (entry.Value);
+				}
+
+				if(!isHallucinationAudioPlayed) {
+					CardboardAudioSource hallucinationAudioSource = hallucinationAudio.GetComponent<CardboardAudioSource> ();
+					hallucinationAudioSource.Play ();
+					isHallucinationAudioPlayed = true;
+				}
+
+				if (blend <= 1.0f) {
 					secondSkyboxMaterial.SetFloat ("_Blend", blend);
 					RenderSettings.skybox = secondSkyboxMaterial;
 				}
-				blend += Time.deltaTime * 0.1f;
+				blend += Time.deltaTime * 0.2f;
 
-				if(blend >= 0.95f) {
+				if(blend >= 1.4f) {
 					BedroomScene.isDreamComplete = true;
 					SceneManager.LoadScene (1);
 				}
