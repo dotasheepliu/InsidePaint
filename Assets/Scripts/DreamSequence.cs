@@ -22,6 +22,16 @@ public class DreamSequence : MonoBehaviour {
 	public GameObject thePlayer;
 	private bool hasSkyMonologueBeenPlayed = false;
 	private bool hasDepressionClipBeenPlayed = false;
+	private AudioSource audioSource;
+	public AudioClip dreamStartClip;
+	public AudioClip gachetClip;
+	public AudioClip iSeeSkyClip;
+	public AudioClip illnessClip;
+	private float waitBeforeGachet;
+	private float waitBeforeGrave;
+	private float waitBeforeWake;
+	private CardboardAudioSource gachetAudioSource;
+	private bool hasGachetAudioBeenPlayed = false;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +48,17 @@ public class DreamSequence : MonoBehaviour {
 		foreach (GameObject gameObject in graveSequenceGameObjects) {
 			gameObject.SetActive (false);
 		}
+
+		audioSource = GetComponent<AudioSource> ();
+		audioSource.volume = 0.5f;
+
+		gachetAudioSource = vincentFriend.GetComponent<CardboardAudioSource> ();
+		gachetAudioSource.clip = gachetClip;
+		gachetAudioSource.volume = 1.0f;
+
+		waitBeforeGachet = dreamStartClip.length + 0.1f;
+		waitBeforeGrave = iSeeSkyClip.length;
+		waitBeforeWake = illnessClip.length;
 	}
 	
 	// Update is called once per frame
@@ -47,45 +68,56 @@ public class DreamSequence : MonoBehaviour {
 			waitBeforeSequenceStarts -= Time.deltaTime;
 		} else {
 			if (!isDreamStartAudioPlayed) {
-				Debug.Log ("Whoa! Where am I? Is this a dream? Dr. Gachet, is that you?"); //TODO: Play audio here.
+				//Debug.Log ("Whoa! Where am I? Is this a dream? Dr. Gachet, is that you?");
+				audioSource.clip = dreamStartClip;
+				audioSource.Play ();
 				isDreamStartAudioPlayed = true;
 			}
 		}
 
-		if (isDreamStartAudioPlayed && !shouldStartGraveSequence) {
-			Debug.Log ("Yes Vincent, my friend! Look at the beautiful night sky above you!"); //TODO: Play audio here.
-			Vector3 lookDirection = Cardboard.SDK.GetComponentInChildren<CardboardHead> ().Gaze.direction;
-			foreach (GameObject gameObject in gameObjectsForTransform) {
-				if (gameObject.tag == "ForVincentVision") {
+		if(waitBeforeGachet > 0) {
+			waitBeforeGachet -= Time.deltaTime;
+		} else {
+			if (isDreamStartAudioPlayed && !shouldStartGraveSequence) {
+				if(!hasGachetAudioBeenPlayed) {
+					//Debug.Log ("Yes Vincent, my friend! Look at the beautiful night sky above you!");
+					gachetAudioSource.Play ();
+					hasGachetAudioBeenPlayed = true;
+				}
+				Vector3 lookDirection = Cardboard.SDK.GetComponentInChildren<CardboardHead> ().Gaze.direction;
+				foreach (GameObject gameObject in gameObjectsForTransform) {
+					if (gameObject.tag == "ForVincentVision") {
 
-					//Transform moon
-					if (gameObject.name == "crescent moon" && !isMoonTransformed) {
-						Vector3 moonDirection = gameObject.transform.position - transform.position;
-						float moonAngle = Vector3.Angle (moonDirection, lookDirection);
-						if (moonAngle <= 5.0f) {
-							Debug.Log ("The moon!"); //TODO: Play Audio here.
-							isMoonTransformed = gameObject.GetComponentInChildren<TransformMoon> ().transformMoon ();
-							if (isMoonTransformed) {
-								gameObject.tag = "InVincentVision";
+						//Transform moon
+						if (gameObject.name == "crescent moon" && !isMoonTransformed) {
+							Vector3 moonDirection = gameObject.transform.position - transform.position;
+							float moonAngle = Vector3.Angle (moonDirection, lookDirection);
+							if (moonAngle <= 5.0f) {
+								isMoonTransformed = gameObject.GetComponentInChildren<TransformMoon> ().transformMoon ();
+								if (isMoonTransformed) {
+									gameObject.tag = "InVincentVision";
+								}
 							}
 						}
-					}
 
-					//Transform Stars
-					if (gameObject.name.Contains ("Star")) {
-						Vector3 starDirection = gameObject.transform.position - transform.position;
-						float starAngle = Vector3.Angle (starDirection, lookDirection);
-						if (starAngle <= 10.0f) {
-							Debug.Log ("The Star!"); //TODO: Play Audio here.
-							isStarTransformed = gameObject.GetComponentInChildren<TransformStars>().transformStar();
-							if (isStarTransformed) {
-								gameObject.tag = "InVincentVision";
-							}
-							if(!hasSkyMonologueBeenPlayed) {
-								Debug.Log ("I see. I see things differently. The sky appears calm and blue. But the stars! " +
-									"Can you see how they roll their light and energy through the sky?"); //TODO: Play Audio here.
-								hasSkyMonologueBeenPlayed = true;
-								shouldStartGraveSequence = true;
+						//Transform Stars
+						if (gameObject.name.Contains ("Star")) {
+							Vector3 starDirection = gameObject.transform.position - transform.position;
+							float starAngle = Vector3.Angle (starDirection, lookDirection);
+							if (starAngle <= 10.0f) {
+								Debug.Log ("The Star!"); //TODO: Play Audio here.
+								isStarTransformed = gameObject.GetComponentInChildren<TransformStars>().transformStar();
+								if (isStarTransformed) {
+									gameObject.tag = "InVincentVision";
+								}
+								if(!hasSkyMonologueBeenPlayed) {
+									/*Debug.Log ("I see. I see things differently. The sky appears calm and blue. But the stars! " +
+									"Can you see how they roll their light and energy through the sky?");*/
+									audioSource.clip = iSeeSkyClip;
+									audioSource.Play ();
+									hasSkyMonologueBeenPlayed = true;
+									shouldStartGraveSequence = true;
+								}
 							}
 						}
 					}
@@ -94,45 +126,55 @@ public class DreamSequence : MonoBehaviour {
 		}
 
 		if (shouldStartGraveSequence && !shouldWakeUp) {
-			GameObject[] skyDreamObjects = GameObject.FindGameObjectsWithTag ("SkyDream");
-			foreach (GameObject gameObject in skyDreamObjects) {
-				gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
-			}
+			if(waitBeforeGrave > 0) {
+				waitBeforeGrave -= Time.deltaTime * 1.0f;
+			} else {
+				GameObject[] skyDreamObjects = GameObject.FindGameObjectsWithTag ("SkyDream");
+				foreach (GameObject gameObject in skyDreamObjects) {
+					gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+				}
 
-			foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
-				gameObject.SetActive (true);
-			}
+				foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
+					gameObject.SetActive (true);
+				}
 
-			float distanceBetweenPlayerAndSarcophagus = Vector3.Distance (thePlayer.transform.position, gravestone.transform.position);
-			if (distanceBetweenPlayerAndSarcophagus <= 6.0f && !hasDepressionClipBeenPlayed) {
-				Debug.Log ("(Sigh) I know its going to end! I know I can do nothing about my illness. " +
-					"Suffering through it is exhausting me. I see no happy future at all!"); //TODO: Play Audio here.
-				hasDepressionClipBeenPlayed = true;
-				shouldWakeUp = true;
+				float distanceBetweenPlayerAndSarcophagus = Vector3.Distance (thePlayer.transform.position, gravestone.transform.position);
+				if (distanceBetweenPlayerAndSarcophagus <= 6.0f && !hasDepressionClipBeenPlayed) {
+					/*Debug.Log ("(Sigh) I know its going to end! I know I can do nothing about my illness. " +
+					"Suffering through it is exhausting me. I see no happy future at all!");*/
+					audioSource.clip = illnessClip;
+					audioSource.Play ();
+					hasDepressionClipBeenPlayed = true;
+					shouldWakeUp = true;
+				}
 			}
 		}
 
 		if (shouldWakeUp) {
-			foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
-				if(gameObject != null) {
-					gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+			if(waitBeforeWake > 0) {
+				waitBeforeWake -= Time.deltaTime * 1.0f;
+			} else {
+				foreach (GameObject gameObject in graveSequenceGameObjectsReference) {
+					if(gameObject != null) {
+						gameObject.transform.Translate (0, Time.deltaTime * -15.0f, 0, Space.Self);
+					}
 				}
-			}
 
-			GameObject[] celestialObjects = GameObject.FindGameObjectsWithTag ("InVincentVision");
-			foreach (GameObject gameObject in celestialObjects) {
-				Destroy (gameObject);
-			}
+				GameObject[] celestialObjects = GameObject.FindGameObjectsWithTag ("InVincentVision");
+				foreach (GameObject gameObject in celestialObjects) {
+					Destroy (gameObject);
+				}
 
-			if (blend <= 0.5f) {
-				secondSkyboxMaterial.SetFloat ("_Blend", blend);
-				RenderSettings.skybox = secondSkyboxMaterial;
-			}
-			blend += Time.deltaTime * 0.1f;
+				if (blend <= 0.5f) {
+					secondSkyboxMaterial.SetFloat ("_Blend", blend);
+					RenderSettings.skybox = secondSkyboxMaterial;
+				}
+				blend += Time.deltaTime * 0.1f;
 
-			if(blend >= 0.8f) {
-				BedroomScene.isDreamComplete = true;
-				SceneManager.LoadSceneAsync (1);
+				if(blend >= 0.8f) {
+					BedroomScene.isDreamComplete = true;
+					SceneManager.LoadSceneAsync (1);
+				}
 			}
 		}
 	}
