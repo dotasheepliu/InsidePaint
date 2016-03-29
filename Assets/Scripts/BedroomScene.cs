@@ -194,13 +194,13 @@ public class BedroomScene : MonoBehaviour {
 		if(shouldStartDreamSequence) {
 			if(waitBeforeSwitch <= 0) {
 				RenderSettings.ambientMode = UnityEngine.Rendering.AmbientMode.Trilight;
-				SceneManager.LoadSceneAsync (2);
+				SceneManager.LoadScene (2);
 			}
 			waitBeforeSwitch -= Time.deltaTime;
 		}
 
 		if(isPaintingComplete) {
-			SceneManager.LoadSceneAsync (0);
+			SceneManager.LoadScene (0);
 		}
 	}
 }
