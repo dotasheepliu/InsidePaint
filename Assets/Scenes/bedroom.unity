@@ -659,7 +659,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594973067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 808013414}
@@ -692,7 +692,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -879,7 +879,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 4.27
+  m_Height: 4.54
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -1493,6 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f471ef04f53cf3d4380282e88e43c980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  easel: {fileID: 2036066433}
   layerMask:
     serializedVersion: 2
     m_Bits: 4294966523
@@ -1517,7 +1518,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3268,7 +3269,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400114, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
       propertyPath: m_RootOrder
@@ -3312,6 +3313,10 @@ Transform:
 --- !u!4 &2036066432 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400090, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
+  m_PrefabInternal: {fileID: 2036066430}
+--- !u!1 &2036066433 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: 1742c0de9a5c3484fb465430bbd6c16c, type: 3}
   m_PrefabInternal: {fileID: 2036066430}
 --- !u!1 &2041564807
 GameObject:

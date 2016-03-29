@@ -17,7 +17,7 @@ public class enlarge : MonoBehaviour {
 		//Debug.Log (transform.localPosition.z);
 
 		if(!BedroomScene.isPaintingComplete) {
-			if ((transform.localPosition.z > 6.8f) && (transform.localPosition.x < -0.4f) && trig == false) {
+			if ((transform.localPosition.z > 3.6f) && (transform.localPosition.x < -0.8f) && trig == false) {
 				trig = true;
 				StartCoroutine (Goodasdasd ());
 			}
@@ -28,7 +28,7 @@ public class enlarge : MonoBehaviour {
 	}
 
 	IEnumerator Goodasdasd () {
-		//yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(1f);
 		for (int i = 1; i < 80; i++) {
 			yield return new WaitForSeconds(0.01f);
 			room.transform.localScale = new Vector3 (room.transform.localScale.x*1.01f, room.transform.localScale.y, room.transform.localScale.z*1.01f);
@@ -36,8 +36,8 @@ public class enlarge : MonoBehaviour {
 		}
 
 		//trig2 = true;
-		yield return new WaitForSeconds(1.0f);
-		SceneManager.LoadScene (1);
+		yield return new WaitForSeconds(2.0f);
+		SceneManager.LoadSceneAsync (1);
 	
 	}
 }
