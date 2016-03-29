@@ -37,7 +37,7 @@ public class enlarge : MonoBehaviour {
 
 		//trig2 = true;
 		yield return new WaitForSeconds(2.0f);
-		SceneManager.LoadSceneAsync (1);
+		SceneManager.LoadScene (1);
 	
 	}
 }

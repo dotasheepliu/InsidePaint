@@ -55,7 +55,7 @@ public class DreamSequence : MonoBehaviour {
 
 		gachetAudioSource = vincentFriend.GetComponent<CardboardAudioSource> ();
 		gachetAudioSource.clip = gachetClip;
-		gachetAudioSource.volume = 1.0f;
+		gachetAudioSource.volume = 0.6f;
 
 		waitBeforeGachet = dreamStartClip.length + 0.1f;
 		waitBeforeGrave = iSeeSkyClip.length;
@@ -181,9 +181,9 @@ public class DreamSequence : MonoBehaviour {
 				}
 				blend += Time.deltaTime * 0.1f;
 
-				if(blend >= 0.8f) {
+				if(blend >= 0.95f) {
 					BedroomScene.isDreamComplete = true;
-					SceneManager.LoadSceneAsync (1);
+					SceneManager.LoadScene (1);
 				}
 			}
 		}
