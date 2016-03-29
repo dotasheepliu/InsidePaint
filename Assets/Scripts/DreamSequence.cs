@@ -50,7 +50,7 @@ public class DreamSequence : MonoBehaviour {
 		}
 
 		audioSource = GetComponent<AudioSource> ();
-		audioSource.volume = 0.5f;
+		audioSource.volume = 0.2f;
 
 		gachetAudioSource = vincentFriend.GetComponent<CardboardAudioSource> ();
 		gachetAudioSource.clip = gachetClip;
@@ -58,7 +58,7 @@ public class DreamSequence : MonoBehaviour {
 
 		waitBeforeGachet = dreamStartClip.length + 0.1f;
 		waitBeforeGrave = iSeeSkyClip.length;
-		waitBeforeWake = illnessClip.length;
+		waitBeforeWake = illnessClip.length + 2f;
 	}
 	
 	// Update is called once per frame

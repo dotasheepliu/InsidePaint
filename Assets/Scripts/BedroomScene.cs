@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(CardboardAudioSource))]
 public class BedroomScene : MonoBehaviour {
+	public GameObject easel;
 	public LayerMask layerMask;
 	private bool hasIntroAudioBeenPlayed = false;
 	private AudioSource audioSource;
@@ -29,7 +30,7 @@ public class BedroomScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioSource = gameObject.GetComponent<AudioSource> ();
-		audioSource.volume = 0.5f;
+		//audioSource.volume = 0.3f;
 
 		/*ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
 		ambientAudioSource.clip = ambientSoundClip;
@@ -43,6 +44,7 @@ public class BedroomScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		audioSource.volume = 0.3f;
 		RaycastHit hitInfo;
 		if(!isAmbientAudioStarted) {
 			ambientAudioSource = ambientSounds.GetComponent<CardboardAudioSource> ();
@@ -67,6 +69,7 @@ public class BedroomScene : MonoBehaviour {
 			}
 		} else {
 			if (!hasIntroAudioBeenPlayed) {
+				easel.SetActive (true);
 				//Debug.Log ("Huh! I should put what I saw onto the canvas.");
 				audioSource.clip = paintStarryNightClip;
 				if (!audioSource.isPlaying) {
