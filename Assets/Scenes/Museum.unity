@@ -1556,6 +1556,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ca80aeb383f098446b90a34ab42841ec, type: 2}
+    - target: {fileID: 9500000, guid: 08f8bca136022c641a2c05ac0775f879, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08f8bca136022c641a2c05ac0775f879, type: 3}
   m_IsPrefabParent: 0
@@ -2063,6 +2067,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5f8a08022fd9465c901f360cce6b981, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1023287076 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
+  m_PrefabInternal: {fileID: 196781884}
 --- !u!1 &1029006022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,7 +2431,6 @@ GameObject:
   - 54: {fileID: 1264712883}
   - 82: {fileID: 1264712882}
   - 114: {fileID: 1264712881}
-  - 114: {fileID: 1264712880}
   m_Layer: 2
   m_Name: FPSController
   m_TagString: Untagged
@@ -2444,19 +2451,6 @@ Transform:
   - {fileID: 1572136589}
   m_Father: {fileID: 1552838810}
   m_RootOrder: 1
---- !u!114 &1264712880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1264712878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b8a9a1971dc4dc8adf21320e3c07e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  room: {fileID: 1518340697}
-  trig: 0
 --- !u!114 &1264712881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3055,6 +3049,18 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: dc4ac9dfd2c624e31a3b39ef9a4ea793, type: 3}
   m_PrefabInternal: {fileID: 598652626}
+--- !u!65 &1518340699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1518340697}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.82203, y: 0.07778749, z: 1.7526}
+  m_Center: {x: 1.3999021, y: 0.038893744, z: 0.8651876}
 --- !u!1001 &1541781435
 Prefab:
   m_ObjectHideFlags: 0
@@ -3319,6 +3325,7 @@ GameObject:
   - 114: {fileID: 1572136594}
   - 82: {fileID: 1572136591}
   - 114: {fileID: 1572136590}
+  - 114: {fileID: 1572136592}
   m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3426,6 +3433,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1572136592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1572136588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5b76c1971c3fd40be62c510c5db720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bedroomPainting: {fileID: 1518340697}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294966523
+  reticle: {fileID: 1023287076}
 --- !u!114 &1572136594
 MonoBehaviour:
   m_ObjectHideFlags: 0

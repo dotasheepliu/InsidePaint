@@ -115,14 +115,14 @@ public class BedroomScene : MonoBehaviour {
 								audioSource.clip = paintedFurnitureClip;
 								if (!audioSource.isPlaying) {
 									audioSource.Play ();
-									hasFurnitureAudioBeenPlayed = true;
 									//shouldStartDreamSequence = true;
 								}
+								hasFurnitureAudioBeenPlayed = true;
 							} else {
 								//Debug.Log ("I should sleep for sometime.");
 								audioSource.clip = sleepClip;
 								if (!audioSource.isPlaying) {
-									audioSource.Play ();
+									//audioSource.Play ();
 									shouldStartDreamSequence = true;
 								}
 							}
@@ -133,9 +133,7 @@ public class BedroomScene : MonoBehaviour {
 								if (!audioSource.isPlaying) {
 									audioSource.Play ();
 								}
-								if (!audioSource.isPlaying) {
-									hasFurnitureAudioBeenPlayed = true;
-								}
+								hasFurnitureAudioBeenPlayed = true;
 							} else {
 								//Debug.Log ("I should sleep for sometime.");
 								audioSource.clip = sleepClip;
